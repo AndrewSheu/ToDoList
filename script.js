@@ -56,7 +56,7 @@ function updataList(dataBase){
     let str = '';
     for (let i = 0; i < dataBase.length; i++) {
     //    str += ` <li>` + (i+1) + `<a href='#' data-num` + `>DEL</a>`  + ' . ' + dataBase[i] + '<li>';
-       str += (i+1) + ' . ' + dataBase[i] +  ` <a href='#' data-num>Delete</a><li> ` ;
+       str += (i+1) + ' . ' + dataBase[i] +  ` <li><a href='#' data-num>Delete</a></li> ` ;
     }
     console.log(str)
     list.innerHTML = str;

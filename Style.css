@@ -16,11 +16,11 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: #f4f2f3;
+    background-color: #94a7ae;
 }
 
 .wrap {
-    background-color: #c0a9bd;
+    background-color: #f4f2f3;
     display: flex;
     justify-content: center;
     width: 500px;
@@ -40,12 +40,25 @@ body {
 }
 
 .listdisplay {
-    background-color: #f4f2f3;
     height: auto;
     padding: 10px;
 }
 
-li {
+ul {
     padding: 5px;
     list-style: none;
+    color: #64766a;
+}
+
+ul a {
+    background-color: #64766a;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 12px;
+
+}
+
+li {
+    padding: 10px;
 }
