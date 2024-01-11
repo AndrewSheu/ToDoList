@@ -1,0 +1,49 @@
+
+/* @main-color: #f4f2f3;
+$sub-color: #c0a9bd;
+$second-color: #94a7ae;
+$thrid-color: #64766a; */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #f4f2f3;
+}
+
+.wrap {
+    background-color: #c0a9bd;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.addlist {
+    padding: 30px 50px;
+}
+
+.addlist input {
+    background-color: #64766a;
+    padding: 5px 10px;
+    color: white;
+}
+
+.listdisplay {
+    background-color: #f4f2f3;
+}
+
+li {
+    padding: 5px;
+    list-style: none;
+}
