@@ -41,6 +41,8 @@ body {
 
 .listdisplay {
     background-color: #f4f2f3;
+    height: auto;
+    padding: 10px;
 }
 
 li {

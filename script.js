@@ -1,9 +1,10 @@
 //Dom
 
 var sendData = document.querySelector('#send');
-var list = document.querySelector('#del-btn');
+var list = document.querySelector('#list');
 //  JSOM.parse 轉為字串    | [] ->> 如果沒有資料,值會變為空值
-dataBase = JSON.parse(localStorage.getItem('listitem')) | [];
+// dataBase = JSON.parse(localStorage.getItem('listitem')) | [];
+const dataBase = []
 
 //Listener
 
@@ -16,6 +17,8 @@ updataList(dataBase);
 
 function addData(e){
     e.preventDefault();
+    console.log('add working')
+
     var txt = document.querySelector('#typing').value;
     if (txt.trim() === ""){
         alert('You need to type something !!!');
@@ -25,16 +28,18 @@ function addData(e){
         context: txt
     };
 
-    // dataBase.push(todo);
+    dataBase.push(txt);
     updataList(dataBase);
 
     localStorage.setItem('listitem', JSON.stringify(dataBase));
 
-    // document.querySelector('#text').value = ' '
+    document.querySelector('#typing').value = ' '
 }
 
 function deleteData(e){
     e.preventDefault();
+    console.log('delete working')
+
     if (e.target.nodeName !== 'A'){return;};
 
     var num = e.target.dataset.num;
@@ -42,14 +47,17 @@ function deleteData(e){
     console.log('delete work~~~');
 
     // localStorage.setItem('listItem', JSON.stringify(dataBase));
-    // updataList(dataBase);
+    updataList(dataBase);
 }
 
 function updataList(dataBase){
+    console.log('updataList working')
+    
     let str = '';
     for (let i = 0; i < dataBase.length; i++) {
-       str += ` <li><a href='#' data-num` + `Del</a>` + (i+1) + '.' + dataBase[i].context + '<li>';
+    //    str += ` <li>` + (i+1) + `<a href='#' data-num` + `>DEL</a>`  + ' . ' + dataBase[i] + '<li>';
+       str += (i+1) + ' . ' + dataBase[i] +  ` <a href='#' data-num>Delete</a><li> ` ;
     }
-    console.log('updataList~')
+    console.log(str)
     list.innerHTML = str;
 }
