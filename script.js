@@ -2,13 +2,20 @@
 
 var sendData = document.querySelector('#send');
 var list = document.querySelector('#list');
+var typing = document.querySelector('#typing')
 //  JSOM.parse 轉為字串    | [] ->> 如果沒有資料,值會變為空值
-// dataBase = JSON.parse(localStorage.getItem('listitem')) | [];
-const dataBase = []
+var dataBase = JSON.parse(localStorage.getItem('listitem')) || [];
+
+ // dataBase = []
 
 //Listener
 
 sendData.addEventListener('click', addData);
+typing.addEventListener('keyup', function(event) {
+    if (event.key === "Enter"){
+        addData()
+    }
+});
 list.addEventListener('click', deleteData);
 updataList(dataBase);
 
@@ -16,9 +23,6 @@ updataList(dataBase);
 //Function
 
 function addData(e){
-    e.preventDefault();
-    console.log('add working')
-
     var txt = document.querySelector('#typing').value;
     if (txt.trim() === ""){
         alert('You need to type something !!!');
@@ -28,7 +32,7 @@ function addData(e){
         context: txt
     };
 
-    dataBase.push(txt);
+    dataBase.push(todo);
     updataList(dataBase);
 
     localStorage.setItem('listitem', JSON.stringify(dataBase));
@@ -40,24 +44,20 @@ function deleteData(e){
     e.preventDefault();
     console.log('delete working')
 
-    if (e.target.nodeName !== 'A'){return;};
+    if (e.target.nodeName !== 'I'){return;};
 
     var num = e.target.dataset.num;
     dataBase.splice(num, 1);
-    console.log('delete work~~~');
 
-    // localStorage.setItem('listItem', JSON.stringify(dataBase));
+    localStorage.setItem('listItem', JSON.stringify(dataBase));
     updataList(dataBase);
 }
 
-function updataList(dataBase){
-    console.log('updataList working')
-    
+function updataList(dataBase){    
     let str = '';
     for (let i = 0; i < dataBase.length; i++) {
-    //    str += ` <li>` + (i+1) + `<a href='#' data-num` + `>DEL</a>`  + ' . ' + dataBase[i] + '<li>';
-       str += (i+1) + ' . ' + dataBase[i] +  ` <li><a href='#' data-num>Delete</a></li> ` ;
+        str += `<li><a href='#'data-num> <i class="fas fa-trash-alt"></i> </a> ` + (i+1) + ' . ' + dataBase[i].context +  `</li> ` ;
     }
-    console.log(str)
     list.innerHTML = str;
+    console.log(dataBase)
 }
