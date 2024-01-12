@@ -59,5 +59,4 @@ function updataList(dataBase){
         str += `<li><a href='#'data-num> <i class="fas fa-trash-alt"></i> </a> ` + (i+1) + ' . ' + dataBase[i].context +  `</li> ` ;
     }
     list.innerHTML = str;
-    console.log(dataBase)
 }
